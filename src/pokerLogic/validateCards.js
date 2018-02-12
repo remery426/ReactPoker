@@ -24,16 +24,15 @@ export function validateCards(hand){
   if(card_arr.length!=5){
     error+="\n Wrong number of cards"
   }
-  var nums = "23456789"
+  var nums = "23456789AKQJakqj"
   var suits = "SCHDschd"
   var invalid_card = false
   for( var i = 0; i <card_arr.length; i++){
     if(suits.indexOf(card_arr[i][(card_arr[i]).length -1]) <=-1){
-      console.log(suits.indexOf(card_arr[i][(card_arr[i]).length -1]))
       invalid_card = true
     }
-    if(nums.indexOf(card_arr[i][0]<=-1)){
-      if(card_arr[i][1] == "1" && card_arr[i][1]=="0"){
+    if(nums.indexOf(card_arr[i][0])<=-1){
+      if(card_arr[i][0] != "1" && card_arr[i][1]!="0"){
         invalid_card = true
       }
     }
@@ -44,6 +43,5 @@ export function validateCards(hand){
   if(error){
     var final_err = "It appears your hand has the following errors:" + error
   }
-  console.log(final_err)
   return final_err
 }
