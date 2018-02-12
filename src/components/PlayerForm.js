@@ -1,13 +1,15 @@
 import React,{Component} from 'react';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
+import {BrowserRouter, Route, Redirect} from 'react-router-dom'
 import {validateCards} from '../pokerLogic/validateCards'
 
 class PlayerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      errors: ''
+      errors: '',
+      redirect: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderContent = this.renderContent.bind(this);
@@ -17,21 +19,43 @@ class PlayerForm extends Component {
   handleSubmit(event){
     event.preventDefault()
     if(this.props.player1 == ''){
-      this.setState({errors: validateCards(event.target.playerHand.value)})
-      if (!this.state.errors){
+      var errors=""
+      if(event.target.playerName.value == ""){
+        errors = "Please enter valid name! "
+      }
+      if(validateCards(event.target.playerHand.value)){
+      errors += validateCards(event.target.playerHand.value)
+    }
+      this.setState({errors: errors})
+      if (!errors){
         this.props.setPlayer1({name:event.target.playerName.value, hand: event.target.playerHand.value})
         event.target.playerName.value = ""
         event.target.playerHand.value = ""
       }
   }
   else{
-    this.setState({errors: validateCards(event.target.playerHand.value)})
-    if (!this.state.errors){
-      this.props.setPlayer2({name:event.target.playerName.value, hand: event.target.playerHand.value})
+    var errors=""
+    if(event.target.playerName.value == ""){
+      errors = "Please enter valid name! "
+    }
+    if(validateCards(event.target.playerHand.value)){
+    errors += validateCards(event.target.playerHand.value)
+  }
+    if(errors){
+    this.setState({errors: errors})
+  }
+    if (!errors){
+      this.props.setPlayer2({name:event.target.playerName.value, hand: event.target.playerHand.value});
+      event.target.playerName.value = ""
+      event.target.playerHand.value = ""
+      this.setState({redirect:true})
     }
   }
 }
   renderContent(){
+    if(this.state.redirect){
+      return <Redirect to="/Winner"/>
+    }
     if (this.props.player1 == "" || this.props.hand1 == ""){
       return(
       <div>
