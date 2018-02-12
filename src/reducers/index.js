@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import authReducer from './authReducer';
-
+import playerReducer from './playerReducer';
 
 export default combineReducers({
-  hand: handReducer,
-  form: reduxForm
+  player: playerReducer
 });

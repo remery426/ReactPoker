@@ -3,6 +3,8 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import Header from './Header';
 import Landing from './Landing';
 import PlayerForm from './PlayerForm'
+import * as actions from "../actions"
+import { connect } from 'react-redux'
 class App extends Component {
   render(){
     return(
@@ -14,8 +16,8 @@ class App extends Component {
         <Route exact path="/PlayerForm" component={PlayerForm} />
       </div>
       </BrowserRouter>
-</div>  
+</div>
     )
   }
 }
-export default App;
+export default connect(null, actions)(App);
