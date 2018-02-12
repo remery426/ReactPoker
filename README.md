@@ -1,3 +1,11 @@
+Additional Notes:
+
+I left the readme that is created with the create react app below.  If node is installed on your machine you should be able to just clone the directory run "npm install"  and then "npm start" to run the app locally.  The app is also to deployed to https://murmuring-shore-31006.herokuapp.com/
+
+
+
+
+create -react-app
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
