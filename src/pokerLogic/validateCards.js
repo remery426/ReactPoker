@@ -32,7 +32,12 @@ export function validateCards(hand){
       invalid_card = true
     }
     if(nums.indexOf(card_arr[i][0])<=-1){
-      if(card_arr[i][0] != "1" && card_arr[i][1]!="0"){
+      if(card_arr[i][0] != "1" || card_arr[i][1]!="0"){
+        invalid_card = true
+      }
+    }
+    if(card_arr[i].length>2 ){
+      if(card_arr[i][0] != "1" || card_arr[i][1]!="0"){
         invalid_card = true
       }
     }

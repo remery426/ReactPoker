@@ -6,8 +6,6 @@ function scoreHand(hand){
   var pair = 0
   var three_kind = false
   var four_kind= false
-  var high_card = 0
-  var high_pair = 0
   var suits = {}
   var numbers = {}
   var is_first = true
@@ -34,7 +32,7 @@ function scoreHand(hand){
     }
     }
     else{
-      if(hand[i]!= " " && hand[i]!=","){
+      if(hand[i]!== " " && hand[i]!==","){
         if(!suits[hand[i].toUpperCase()]){
           suits[hand[i].toUpperCase()] = 1
         }
@@ -56,34 +54,29 @@ delete(numbers[1])
 var straight_arr = []
 ///check pairs
 for(var key in suits){
-  if(suits[key]==5){
+  if(suits[key]===5){
     flush = true
   }
 }
 for(var key in numbers){
   straight_arr.push(parseInt(key))
-  if(numbers[key]==2){
-    if(numbers[key]>high_pair){
-      high_pair = numbers[key]
-  }
-  pair+=1
+  if(numbers[key]===2){
+    pair+=1
 }
-  if(numbers[key] ==3){
+  if(numbers[key] ===3){
     three_kind =true
-    high_pair= numbers[key]
   }
-  if(numbers[key]==4){
+  if(numbers[key]===4){
     four_kind = true
-    high_pair = numbers[key]
   }
 }
 //check for straights
 
 var sorted_arr = straight_arr.sort(function(a,b){return a - b})
 
-if (sorted_arr.length==5){
+if (sorted_arr.length===5){
   for(var i = 0; i<sorted_arr.length-1; i++){
-    if(sorted_arr[i]+1 != sorted_arr[i+1]){
+    if(sorted_arr[i]+1 !== sorted_arr[i+1]){
       straight = false
     }
   }
@@ -106,14 +99,14 @@ if (flush === true){
 if(straight === true){
         return ["Straight", straight_arr]
           }
-  if(three_kind == true){
+  if(three_kind === true){
           return ["Three of a Kind", straight_arr]
           }
-if (pair==2){
+if (pair===2){
 
   return ["Two Pair", straight_arr]
           }
-if (pair ==1){
+if (pair ===1){
             return ["Pair", straight_arr]
           }
   else{
@@ -147,7 +140,7 @@ export function compareHands(hand1, hand2){
   else{
     var index = 4
     while(index >=0){
-                if (score1[score1.length-1][index] == score2[score2.length-1][index]){
+                if (score1[score1.length-1][index] === score2[score2.length-1][index]){
                     index-=1
                   }
                 else{
