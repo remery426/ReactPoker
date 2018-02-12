@@ -10,3 +10,8 @@ export const setPlayer2 = (data) =>{
 		payload: data
 	}
 }
+export const newGame = () =>{
+	return {
+		type: 'newGame'
+	}
+}

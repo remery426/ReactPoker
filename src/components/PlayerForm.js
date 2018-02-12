@@ -15,7 +15,9 @@ class PlayerForm extends Component {
     this.renderContent = this.renderContent.bind(this);
 
 }
-
+  componentDidMount(){
+    this.props.newGame()
+  }
   handleSubmit(event){
     event.preventDefault()
     if(this.props.player1 == ''){

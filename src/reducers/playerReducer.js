@@ -5,6 +5,9 @@ export default (state = INITIAL_STATE, action)=>{
       return{...state, player2:action.payload.name, hand2: action.payload.hand}
     case 'setPlayer1':
       return{...state, player1: action.payload.name, hand1: action.payload.hand}
+    case 'newGame':
+
+      return{...state, player1: '', player2: '', hand1: '', hand2:''}
     default:
       return state;
   }
